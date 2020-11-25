@@ -8,7 +8,7 @@
 
 local vim = vim
 local api = vim.api
-local cmd = api.nvim_command
+local exe = api.nvim_command
 local fn  = vim.fn
 
 --[[
@@ -27,7 +27,7 @@ local _TYPE_TABLE  = 'table'
 
 -- Determine which set of colors to use.
 local _USE_HEX = vim.o.termguicolors
-local _USE_256 = tonumber(vim.o.t_Co) >= 256
+local _USE_256 = tonumber(vim.o.t_Co) > 255
 	or string.find(vim.env.TERM, '256')
 
 --[[
@@ -39,7 +39,7 @@ local _USE_256 = tonumber(vim.o.t_Co) >= 256
 -- Add the 'blend' parameter to some highlight command, if there is one.
 local function blend(command, attributes) -- {{{ †
 	if attributes.blend then -- There is a value for the `highlight-blend` field.
-		command[#command + 1] = ' blend='..attributes.blend
+		command[#command+1] = ' blend='..attributes.blend
 	end
 end --}}} ‡
 
@@ -57,30 +57,30 @@ local function get(color, index) -- {{{ †
 		return color[index]
 	elseif type(color) == _TYPE_STRING then
 		return color
-	else
-		return _NONE
 	end
+
+	return _NONE
 end --}}} ‡
 
 --[[ If using hex and 256-bit colors, then populate the gui* and cterm* args.
 	If using 16-bit colors, just populate the cterm* args. ]]
 local colorize = _USE_HEX and function(command, attributes) -- {{{ †
-	command[#command+1]=' guibg='..get(attributes.bg, _PALETTE_HEX)..' guifg='..get(attributes.fg, _PALETTE_HEX)
+	command[#command+1] = ' guibg='..get(attributes.bg, _PALETTE_HEX)..' guifg='..get(attributes.fg, _PALETTE_HEX)
 end or _USE_256 and function(command, attributes)
-	command[#command+1]=' ctermbg='..get(attributes.bg, _PALETTE_256)..' ctermfg='..get(attributes.fg, _PALETTE_256)
+	command[#command+1] = ' ctermbg='..get(attributes.bg, _PALETTE_256)..' ctermfg='..get(attributes.fg, _PALETTE_256)
 end or function(command, attributes)
-	command[#command+1]=' ctermbg='..get(attributes.bg, _PALETTE_ANSI)..' ctermfg='..get(attributes.fg, _PALETTE_ANSI)
+	command[#command+1] = ' ctermbg='..get(attributes.bg, _PALETTE_ANSI)..' ctermfg='..get(attributes.fg, _PALETTE_ANSI)
 end --}}} ‡
 
 -- This function appends `selected_attributes` to the end of `highlight_cmd`.
 local stylize = _USE_HEX and function(command, style, color)
-	command[#command+1]=' gui='..style
+	command[#command+1] = ' gui='..style
 
 	if color then -- There is an undercurl color.
-		command[#command + 1] = ' guisp='..get(color, _PALETTE_HEX)
+		command[#command+1] = ' guisp='..get(color, _PALETTE_HEX)
 	end
 end or function(command, style)
-	command[#command + 1] = ' cterm='..style
+	command[#command+1] = ' cterm='..style
 end
 
 -- Load specific &bg instructions
@@ -148,7 +148,7 @@ function highlite.highlight(highlight_group, attributes) -- {{{ †
 		end
 	end
 
-	cmd(table.concat(highlight_cmd))
+	exe(table.concat(highlight_cmd))
 end --}}} ‡
 
 function highlite:highlight_terminal(terminal_ansi_colors)
@@ -157,46 +157,49 @@ function highlite:highlight_terminal(terminal_ansi_colors)
 	end end
 end
 
-return setmetatable(highlite, {
-	['__call'] = function(self, normal, highlights, terminal_ansi_colors)
-		-- function to resolve function highlight groups being defined by function calls.
-		local function resolve(tbl, key)
-			local value = tbl[key]
-			if type(value) == 'function' then
-				-- lazily cache the result; next time, if it isn't a function this step will be skipped
-				tbl[key] = value(setmetatable({}, {
-					['__index'] = function(_, inner_key) return resolve(tbl, inner_key) end
-				}))
-			end
-			return tbl[key]
+return setmetatable(highlite,
+{['__call'] = function(self, normal, highlights, terminal_ansi_colors)
+	-- function to resolve function highlight groups being defined by function calls.
+	local function resolve(tbl, key)
+		local value = tbl[key]
+		local value_type = type(value)
+
+		if value_type == 'function' then
+			-- lazily cache the result; next time, if it isn't a function this step will be skipped
+			tbl[key] = value_type(setmetatable({},
+				{['__index'] = function(_, inner_key)
+					return resolve(tbl, inner_key)
+				end}
+			))
 		end
 
-
-		-- save the colors_name before syntax reset
-		local color_name = vim.g.colors_name
-
-		-- Clear the highlighting.
-		cmd('hi clear')
-
-		-- If the syntax has been enabled, reset it.
-		if fn.exists('syntax_on') then cmd('syntax reset') end
-
-		-- replace the colors_name
-		vim.g.colors_name = color_name
-		color_name = nil
-
-		-- If we aren't using hex nor 256 colorsets.
-		if not (_USE_HEX or _USE_256) then vim.o.t_Co = '16' end
-
-		-- Highlight the baseline.
-		self.highlight('Normal', normal)
-
-		-- Highlight everything else.
-		for highlight_group, _ in pairs(highlights) do
-			self.highlight(highlight_group, resolve(highlights, highlight_group))
-		end
-
-		-- Set the terminal highlight colors.
-		self:highlight_terminal(terminal_ansi_colors)
+		return tbl[key]
 	end
-})
+
+	-- save the colors_name before syntax reset
+	local color_name = vim.g.colors_name
+
+	-- Clear the highlighting.
+	exe 'hil clear'
+
+	-- If the syntax has been enabled, reset it.
+	if fn.exists 'syntax_on' then exe 'syntax reset' end
+
+	-- replace the colors_name
+	vim.g.colors_name = color_name
+	color_name = nil
+
+	-- If we aren't using hex nor 256 colorsets.
+	if not (_USE_HEX or _USE_256) then vim.o.t_Co = '16' end
+
+	-- Highlight the baseline.
+	self.highlight('Normal', normal)
+
+	-- Highlight everything else.
+	for highlight_group, _ in pairs(highlights) do
+		self.highlight(highlight_group, resolve(highlights, highlight_group))
+	end
+
+	-- Set the terminal highlight colors.
+	self:highlight_terminal(terminal_ansi_colors)
+end})

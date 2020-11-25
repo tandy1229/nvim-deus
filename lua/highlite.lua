@@ -167,10 +167,11 @@ return setmetatable(highlite,
 		if value_type == 'function' then
 			-- lazily cache the result; next time, if it isn't a function this step will be skipped
 			tbl[key] = value_type(setmetatable({},
-				{['__index'] = function(_, inner_key)
-					return resolve(tbl, inner_key)
-				end}
+				{['__index'] = function(_, inner_key) return resolve(tbl, inner_key) end}
 			))
+		elseif value_type == _TYPE_STRING and not string.find(value, '#') then
+			-- We don't want to update the original in this case; it needs to still be `link`ed later.
+			return self.group(value)
 		end
 
 		return tbl[key]

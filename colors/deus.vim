@@ -82,41 +82,57 @@ vim.g.colors_name = 'deus'
 	NOTE: |Replace-mode| will probably be useful here.
 ]]
 
-local black       = {'#202020', 0,   'black'}
-local gray        = {'#808080', 244, 'gray'}
-local gray_dark   = {'#353535', 236, 'darkgrey'}
-local gray_darker = {'#505050', 244, 'gray'}
+local black       = {'#2C323B', 235, 'black'}
+local gray        = {'#928374', 244, 'gray'}
+local gray_dark   = {'#3c3836', 236, 'darkgrey'}
+local gray_darker = {'#242a32', 244, 'gray'}
 local gray_light  = {'#c0c0c0', 251, 'gray'}
 local white       = {'#ffffff', 15,  'white'}
 
+local dsdark0       = {'#2C323B', 235, 'darkgrey'}
+local dsdark1       = {'#3c3836', 237, 'darkgrey'}
+local dsdark2       = {'#242a32', 239, 'darkgrey'}
+local dsdark3       = {'#665c54', 241, 'darkgrey'}
+local dsdark4       = {'#7c6f64', 243, 'darkgrey'}
+local dsdark4_256   = {'#7c6f64', 243, 'darkgrey'}
+
+local dsColumn       = {'#35312f', 239, 'darkgrey'}
+
+local dslight0      = {'#d2d2d2', 229, 'grey'}
+local dslight1      = {'#ebdbb2', 223, 'grey'}
+local dslight2      = {'#d5c4a1', 250, 'grey'}
+local dslight3      = {'#bdae93', 248, 'grey'}
+local dslight4      = {'#a89984', 246, 'grey'}
+local dslight4_256  = {'#a89984', 246, 'grey'}
+
 local tan = {'#f4c069', 180, 'darkyellow'}
 
-local red       = {'#ee4a59', 196, 'red'}
+local red       = {'#fb4934', 167, 'red'}
 local red_dark  = {'#a80000', 124, 'darkred'}
 local red_light = {'#ff4090', 203, 'red'}
 
-local orange       = {'#ff8900', 208, 'darkyellow'}
+local orange       = {'#fe8019', 208, 'darkyellow'}
 local orange_light = {'#f0af00', 214, 'yellow'}
 
-local yellow = {'#f0df33', 220, 'yellow'}
+local yellow = {'#fabd2f', 220, 'yellow'}
 
 local green_dark  = {'#50de60', 83, 'darkgreen'}
-local green       = {'#77ff00', 72, 'green'}
+local green       = {'#98C379', 142, 'green'}
 local green_light = {'#a0ff70', 72, 'green'}
 
-local blue     = {'#7090ff', 63, 'darkblue'}
-local cyan     = {'#33efff', 87, 'cyan'}
+local blue     = {'#83a598', 109, 'darkblue'}
+local cyan     = {'#8ec07c', 108, 'aqua'}
 local ice      = {'#49a0f0', 63, 'cyan'}
 local teal     = {'#00d0c0', 38, 'cyan'}
 local turqoise = {'#2bff99', 33, 'blue'}
 
 local magenta      = {'#d5508f', 126, 'magenta'}
 local magenta_dark = {'#bb0099', 126, 'darkmagenta'}
-local pink         = {'#ffa6ff', 162, 'magenta'}
-local pink_light   = {'#ffb7b7', 38,  'white'}
-local purple       = {'#cf55f0', 129, 'magenta'}
-local purple_light = {'#af60af', 63,  'magenta'}
-
+local purple       = {'#C678DD', 175, 'magenta'}
+local purple_light = {'#A8D5E2', 63,  'magenta'}
+local magenta_light1 = {'#BD93BD', 63,  'magenta'}
+local magenta_light2 = {'#A7A2A9', 63,  'magenta'}
+local navyblue = {'#6699CC', 63,  'blue'}
 --[[ Step 4: highlights
 	You can define highlight groups like this:
 
@@ -235,7 +251,7 @@ local FG = 'fg'
 
 --[[ These are the ones you should edit. ]]
 -- This is the only highlight that must be defined separately.
-local highlight_group_normal = {fg=gray_light, bg=black}
+local highlight_group_normal = {fg=dslight1, bg=black}
 
 -- This is where the rest of your highlights should go.
 local highlight_groups = {
@@ -248,35 +264,39 @@ local highlight_groups = {
 	--[[ 4.1.1. Literals]]
 	Constant  = {fg=orange_light},
 	String    = {fg=green},
-	Character = {fg=red_light},
-	Number    = {fg=pink_light},
-	Boolean   = {fg=yellow},
+	Character = {fg=purple},
+	Number    = {fg=purple},
+	Boolean   = {fg=purple},
 	Float     = 'Number',
 
 	--[[ 4.1.2. Identifiers]]
-	Identifier = {fg=FG},
-	Function   = {fg=purple},
+	Identifier = {fg=blue},
+	Function   = {fg=green, style='bold'},
+	TSVariableBuiltin = {fg=orange},
+	TSConstBuiltin = {fg=orange, style='italic'},
+	TSAttribute = {fg=blue, style='italic'},
+	TSParameter = {fg=dslight2, style='italic'},
 
 	--[[ 4.1.3. Syntax]]
-	Statement   = {fg=ice},
-	Conditional = {fg=ice,      style='italic'},
-	Repeat      = {fg=turqoise, style='bold'},
-	Label       = {fg=pink,     style='italic'},
-	Operator    = {fg=green_dark},
-	Keyword     = {fg=teal},
-	Exception   = {fg=red_light, style='bold'},
+	Statement   = {fg=red},
+	Conditional = {fg=red,                style='italic'},
+	Repeat      = {fg=red,                style='bold'},
+	Label       = {fg=magenta_light1,     style='italic'},
+	Operator    = {fg=blue},
+	Keyword     = {fg=red},
+	Exception   = {fg=red,                style='bold'},
 	Noise       = 'Delimiter',
 
 	--[[ 4.1.4. Metatextual Information]]
 	PreProc   = {fg=tan},
-	Include   = {fg=green_light, style='nocombine'},
+	Include   = {fg=blue,        style='nocombine'},
 	Define    = {fg=blue,        style='nocombine'},
 	Macro     = {fg=blue,        style='italic'},
 	PreCondit = {fg=tan,         style='italic'},
 
 	--[[ 4.1.5. Semantics]]
-	Type         = {fg=cyan},
-	StorageClass = {fg=orange_light, style='bold'},
+	Type         = {fg=yellow},
+	StorageClass = {fg=orange},
 	Structure    = {fg=blue,         style='bold'},
 	Typedef      = {fg=cyan,         style='italic'},
 
@@ -285,7 +305,7 @@ local highlight_groups = {
 	SpecialChar    = {fg=red_light, style='italic'},
 	SpecialKey     = 'Character',
 	Tag            = 'Underlined',
-	Delimiter      = {fg=white},
+	Delimiter      = {fg=orange},
 	SpecialComment = {fg=gray, style={'bold', 'nocombine'}},
 	Debug          = 'WarningMsg',
 
@@ -308,16 +328,16 @@ local highlight_groups = {
 	StatusLineTermNC = 'StatusLineNC',
 
 	--[[ 4.2.2. Separators]]
-	VertSplit   = {fg=white},
-	TabLine     = {fg=FG, bg=gray_darker},
-	TabLineFill = {fg=gray_darker, bg=black},
-	TabLineSel  = {fg=FG, bg=BG},
-	Title       = {style='bold'},
+	VertSplit   = {fg=dslight1},
+	TabLine     = {bg=gray_darker, fg=dsdark4},
+	TabLineFill = {bg=blue},
+	TabLineSel  = {fg=dslight3},
+	Title       = {fg=dslight3, style='bold'},
 
 	--[[ 4.2.3. Conditional Line Highlighting]]
 	Conceal         = 'NonText',
 	CursorLine      = {bg=gray_dark},
-	CursorLineNr    = function(self) return {fg=pink, bg=self.CursorLine.bg} end,
+	CursorLineNr    = function(self) return {fg=dslight1, bg=self.CursorLine.bg} end,
 	debugBreakpoint = 'ErrorMsg',
 	debugPC         = 'ColorColumn',
 	LineNr          = {fg=gray},
@@ -326,26 +346,26 @@ local highlight_groups = {
 	VisualNOS       = {bg=gray_darker},
 
 	--[[ 4.2.4. Popup Menu]]
-	Pmenu      = {fg=FG, bg=gray_dark},
-	PmenuSbar  = {bg=black},
-	PmenuSel   = {fg=FG},
-	PmenuThumb = {bg=white},
+	Pmenu      = {bg=dsdark2, fg=dslight1},
+	PmenuSbar  = {fg=dsdark2},
+	PmenuSel   = {fg=dsdark1, bg=blue, style='bold'},
+	PmenuThumb = {bg=dsdark4},
 	WildMenu   = 'PmenuSel',
 
 	--[[ 4.2.5. Folds]]
 	FoldColumn = {bg=gray_darker, style='bold'},
-	Folded     = {fg=black,  bg=purple_light, style='italic'},
+	Folded     = {bg=dsdark2,  fg=magenta, style='italic'},
 
 	--[[ 4.2.6. Diffs]]
-	DiffAdd    = {fg=black, bg=green_dark},
-	DiffChange = {},
+	DiffAdd    = {fg=green_dark, style='inverse'},
+	DiffChange = {fg=yellow,     style='inverse'},
 	DiffDelete = function(self) return {fg=self.DiffAdd.fg, bg=red} end,
 	DiffText   = function(self) return {fg=self.DiffAdd.fg, bg=yellow} end,
 
 	--[[ 4.2.7. Searching]]
 	IncSearch  = {style='inverse'},
-	Search     = {style={'underline', color=white}},
-	MatchParen = {fg=green, style={'bold', 'underline'}},
+	Search     = {bg=yellow, fg=dsdark2},
+	MatchParen = {bg=yellow, fg=green, style={'bold', 'underline'}},
 
 	--[[ 4.2.8. Spelling]]
 	SpellBad   = {style={'undercurl', color=red}},
@@ -354,13 +374,13 @@ local highlight_groups = {
 	SpellRare  = {style={'undercurl', color=orange}},
 
 	--[[ 4.2.9. Conditional Column Highlighting]]
-	ColorColumn = {style='inverse'},
+	ColorColumn = {bg=dsColumn, style='inverse'},
 	SignColumn  = {},
 
 	--[[ 4.2.10. Messages]]
 	ErrorMsg   = {fg=red,          style='bold'},
 	HintMsg    = {fg=magenta,      style='bold'},
-	InfoMsg    = {fg=pink_light,   style='bold'},
+	InfoMsg    = {fg=green,   style='bold'},
 	ModeMsg    = {fg=yellow},
 	WarningMsg = {fg=orange,       style='bold'},
 	Question   = {fg=orange_light, style='underline'},
@@ -382,6 +402,7 @@ local highlight_groups = {
 	LspDiagnosticsFloatingInformation = 'InfoMsg',
 	LspDiagnosticsSignInformation = 'LspDiagnosticsFloatingInformation',
 
+	LspDiagnosticsUnderline = {style={'undercurl', color=white}},
 	LspDiagnosticsUnderlineError = 'CocErrorHighlight',
 	LspDiagnosticsUnderlineHint  = 'CocHintHighlight',
 	LspDiagnosticsUnderlineInfo  = 'CocInfoHighlight',

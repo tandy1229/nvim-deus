@@ -201,3 +201,4 @@ return setmetatable(highlite, {
 		self:highlight_terminal(terminal_ansi_colors)
 	end
 })
+

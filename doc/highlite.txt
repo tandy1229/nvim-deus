@@ -1,57 +1,57 @@
-*highlite.txt*        Plugin for maintaining colorschemes
-*highlite*
+*deus.txt*        Plugin for maintaining colorschemes
+*deus*
 
 Author: Iron-E – https://github.com/Iron-E & https://gitlab.com/Iron_E
-Web: https://github.com/Iron-E/nvim-highlite
+Web: https://github.com/Iron-E/nvim-deus
 
-|highlite| is a plugin for creating and maintaining colorschemes. It can
+|deus| is a plugin for creating and maintaining colorschemes. It can
 be configured by cloning the repository and following the README, or
 individually used to comprehensively highlight groups with its functions.
 
 ==============================================================================
-0. Table of Contents                                              *highlite-toc*
+0. Table of Contents                                              *deus-toc*
 
-1. Requirements ............ |highlite-requirements|
-2. Usage ................... |highlite-usage|
+1. Requirements ............ |deus-requirements|
+2. Usage ................... |deus-usage|
 
 ==============================================================================
-1. Requirements                                          *highlite-requirements*
+1. Requirements                                          *deus-requirements*
 
 - Neovim 0.5+
 
 ==============================================================================
-2. Usage                                                        *highlite-usage*
+2. Usage                                                        *deus-usage*
 
-                                                              *highlite.group()*
-`highlite`.group({group_name})                                  *highlite-group()*
+                                                              *deus.group()*
+`deus`.group({group_name})                                  *deus-group()*
 
-	Convert a pre-existing |highlight-group| into a format that |highlite|
+	Convert a pre-existing |highlight-group| into a format that |deus|
 	recognizes.
 
 	Note: the |highlight-group| must have been either:
 		- |:highlight|ed.
-		- |highlite-highlight|ed.
+		- |deus-highlight|ed.
 
 	Parameters: ~
 		{group_name}  A `string` which is the |highlight-group| to convert.
 
 	Return: ~
 		- A `table` which can be used as the {attributes} parameter for
-		  |highlite.highlight()|.
+		  |deus.highlight()|.
 
 	Example: ~
 >
-	local highlite = require('highlite')
+	local deus = require('deus')
 
 	-- get the 'Error' highlight group
-	local hl_error = highlite.group('Error')
+	local hl_error = deus.group('Error')
 
 	-- Define 'ErrorMsg' as foreground = background of 'Error'
-	highlite.highlight('ErrorMsg', {fg=hl_error.bg, bg=BG})
+	deus.highlight('ErrorMsg', {fg=hl_error.bg, bg=BG})
 <
 
-                                                          *highlite.highlight()*
-`highlite`.highlight({group}, {attributes})                 *highlite-highlight()*
+                                                          *deus.highlight()*
+`deus`.highlight({group}, {attributes})                 *deus-highlight()*
 
 	Highlight some {group} according to its {attributes}.
 
@@ -80,22 +80,22 @@ individually used to comprehensively highlight groups with its functions.
 
 	Example: ~
 >
-		local highlite = require('highlite')
+		local deus = require('deus')
 
 		local yellow = {'#f0df33', 220, 'yellow'}
 
 		-- Highlight a new group
-		highlite.highlight('Todo', {fg=yellow, style={'bold', 'underline'}})
+		deus.highlight('Todo', {fg=yellow, style={'bold', 'underline'}})
 		-- Link a grou
-		highlite.highlight('Identifier', 'Todo')
+		deus.highlight('Identifier', 'Todo')
 <
 
 	See also: ~
 		|group-names|  Additional semantic highlighting groups.
 
-                                                 *highlite:highlight_terminal()*
-                                                 *highlite-highlight_terminal()*
-`highlite`:highlight_terminal({terminal_ansi_colors})
+                                                 *deus:highlight_terminal()*
+                                                 *deus-highlight_terminal()*
+`deus`:highlight_terminal({terminal_ansi_colors})
 
 	Override the |terminal| colors with a new table of {terminal_ansi_colors}.
 
@@ -127,9 +127,9 @@ individually used to comprehensively highlight groups with its functions.
 
 	Example: ~
 >
-		local highlite = require('highlite')
+		local deus = require('deus')
 
-		highlite:highlight_terminal({
+		deus:highlight_terminal({
 			[1]  = {'#202020' , 0   , 'black'},
 			[2]  = {'#a80000' , 124 , 'darkred'},
 			[3]  = {'#50de60' , 83  , 'darkgreen'},

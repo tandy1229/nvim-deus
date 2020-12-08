@@ -4,7 +4,9 @@
 
 # Introduction
 
-`nvim-highlite` is a colorscheme template repository for Neovim 0.5+.
+`nvim-deus` is a colorscheme template repository for Neovim 0.5+.
+
+**This is the config I modify from [vim-deus](https://github.com/ajmwagar/vim-deus), inspired by @theniceboy** 
 
 This template's _defaults_ focus on:
 
@@ -33,11 +35,11 @@ This template's _design_ focuses on:
 ## Creating Your Own
 
 1. Fork this repository, or clone it with `git clone https://github.com/Iron-E/nvim-highlite`.
-2. Follow the instructions in [`colors/highlite.vim`](colors/highlite.vim).
+2. Follow the instructions in [`colors/deus.vim`](colors/deus.vim).
 	* If you are on a Unix system, use the [setup script](setup.sh) like so:
 	```sh
 	chmod +x ./setup.sh
-	./setup.sh highlite <colorscheme>
+	./setup.sh deus <colorscheme>
 	```
 	Where `<colorscheme>` is the name of your desired colorscheme.
 	* If you are on Windows, rename the files manually.
@@ -47,7 +49,7 @@ This template's _design_ focuses on:
 1. Install a plugin manager such as [`vim-plug`](https://github.com/junegunn/vim-plug) and use it to "plug" this repository.
 	```viml
 	" vim-plug example
-	Plug "Iron-E/nvim-highlite"
+	Plug "tandy1229/nvim-deus"
 	```
 2. Specify this colorscheme as your default colorscheme in the `init.vim`:
 	```viml
@@ -55,26 +57,26 @@ This template's _design_ focuses on:
 	" This plugin is fully compatible with 8-bit, 16-bit, and 24-bit colors.
 	set termguicolors
 	" Use the colorscheme
-	colorscheme highlite
+	colorscheme deus
 	```
 
 # Usage
 
 ## Examples
 
-This repository in itself is an example of how to use `nvim-highlite`. Aside from this, the following colorschemes are built using `nvim-highlite`:
+This repository in itself is an example of how to use `nvim-deus`. Aside from this, the following colorschemes are built using `nvim-deus`:
 
 * (if you use this, open an issue and I'll add it here!)
 
 ### As Dependency
 
-Below is an example of how to use `nvim-highlite` as a dependency.
+Below is an example of how to use `nvim-deus` as a dependency.
 
-* See `:h highlite-usage` for more.
+* See `:h deus-usage` for more.
 
 ```lua
--- Import nvim-highlite
-local highlite = require('highlite')
+-- Import nvim-deus
+local deus = require('deus')
 
 -- First, define some colors
 local red = {'#FF0000', 1, 'red'}
@@ -82,23 +84,23 @@ local black = {'#000000', 0, 'black'}
 local white = {'#FFFFFF', 255, 'white'}
 
 -- Highlight 'Identifier'
-highlite.highlight('Identifier', {bg=red, fg=black, style='bold'})
+deus.highlight('Identifier', {bg=red, fg=black, style='bold'})
 
 -- Highlight 'Function' conditionally according to background color.
-highlite.highlight('Function', {bg=black, fg=red, light={bg=white}})
+deus.highlight('Function', {bg=black, fg=red, light={bg=white}})
 
 -- Link 'Example' to 'Identifier'
-highlite.highlight('Example', 'Identifier')
+deus.highlight('Example', 'Identifier')
 
 -- You can also reference specific attributes of another highlight group.
-highlite.highlight('AnotherExample', {bg=highlite.group'SpellBad'.bg, fg=white})
+deus.highlight('AnotherExample', {bg=deus.group'SpellBad'.bg, fg=white})
 ```
 
 ### As Template
 
-Below is an example of how to use `nvim-highlite` as a template.
+Below is an example of how to use `nvim-deus` as a template.
 
-* See [`highlite.vim`](colors/highlite.vim) for more.
+* See [`deus.vim`](colors/deux.vim) for more.
 
 ```lua
 -- First, define some colors

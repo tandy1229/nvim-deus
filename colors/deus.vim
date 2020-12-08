@@ -340,6 +340,7 @@ local highlight_groups = {
 	Conceal         = 'NonText',
 	CursorLine      = {bg=gray_dark},
 	CursorLineNr    = function(self) return {fg=dslight1, bg=self.CursorLine.bg} end,
+  -- CursorLineNr    = {bg=gray_darker, fg=dslight1},
 	debugBreakpoint = 'ErrorMsg',
 	debugPC         = 'ColorColumn',
 	LineNr          = {fg=gray},
@@ -376,7 +377,7 @@ local highlight_groups = {
 	SpellRare  = {style={'undercurl', color=orange}},
 
 	--[[ 4.2.9. Conditional Column Highlighting]]
-	ColorColumn = {bg=dsColumn, style='inverse'},
+	ColorColumn = {bg=dsColumn}, -- important
 	SignColumn  = {},
 
 	--[[ 4.2.10. Messages]]
@@ -836,21 +837,21 @@ local highlight_groups = {
 ]]
 
 local terminal_ansi_colors = {
-	[1]  = black,
-	[2]  = red_dark,
-	[3]  = green_dark,
-	[4]  = orange,
-	[5]  = blue,
-	[6]  = magenta_dark,
-	[7]  = teal,
-	[8]  = gray,
-	[9]  = gray_dark,
-	[10] = red,
-	[11] = green,
-	[12] = yellow,
-	[13] = turqoise,
-	[14] = purple,
-	[15] = cyan,
+	[1]  = '#000000',
+	[2]  = '#FF5555',
+	[3]  = '#50FA7B',
+	[4]  = '#F1FA8C',
+	[5]  = '#BD93F9',
+	[6]  = '#FF79C6',
+	[7]  = '#8BE9FD',
+	[8]  = '#BFBFBF',
+	[9]  = '#4D4D4D',
+	[10] = '#FF6E67',
+	[11] = '#5AF78E',
+	[12] = '#F4F99D',
+	[13] = '#CAA9FA',
+	[14] = '#FF92D0',
+	[15] = '#9AEDFE',
 	[16] = gray_light
 }
 

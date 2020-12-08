@@ -83,9 +83,9 @@ vim.g.colors_name = 'deus'
 ]]
 
 local black       = {'#2C323B', 235, 'black'}
-local gray        = {'#928374', 244, 'gray'}
-local gray_dark   = {'#3c3836', 236, 'darkgrey'}
-local gray_darker = {'#242a32', 244, 'gray'}
+local gray        = {'#928374', 245, 'gray'}
+local gray_dark   = {'#3c3836', 237, 'darkgrey'}
+local gray_darker = {'#242a32', 239, 'gray'}
 local gray_light  = {'#c0c0c0', 251, 'gray'}
 local white       = {'#ffffff', 15,  'white'}
 
@@ -128,6 +128,8 @@ local turqoise = {'#2bff99', 33, 'blue'}
 
 local magenta      = {'#d5508f', 126, 'magenta'}
 local magenta_dark = {'#bb0099', 126, 'darkmagenta'}
+local pink         = {'#ffa6ff', 162, 'magenta'}
+local pink_light   = {'#ffb7b7', 38,  'white'}
 local purple       = {'#C678DD', 175, 'magenta'}
 local purple_light = {'#A8D5E2', 63,  'magenta'}
 local magenta_light1 = {'#BD93BD', 63,  'magenta'}

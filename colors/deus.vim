@@ -297,7 +297,7 @@ local highlight_groups = {
 	PreCondit = {fg=tan,         style='italic'},
 
 	--[[ 4.1.5. Semantics]]
-	Type         = {fg=yellow},
+	Type         = {fg=yellow, style='italic'},
 	StorageClass = {fg=orange},
 	Structure    = {fg=blue,         style='bold'},
 	Typedef      = {fg=cyan,         style='italic'},

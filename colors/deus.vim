@@ -280,12 +280,12 @@ local highlight_groups = {
 	TSParameter = {fg=dslight2, style='italic'},
 
 	--[[ 4.1.3. Syntax]]
-	Statement   = {fg=red},
+	Statement   = {fg=red,                style='bold'},
 	Conditional = {fg=red,                style='italic'},
 	Repeat      = {fg=red,                style='bold'},
 	Label       = {fg=magenta_light1,     style='italic'},
 	Operator    = {fg=blue},
-	Keyword     = {fg=red},
+	Keyword     = {fg=red,        style='italic'},
 	Exception   = {fg=red,                style='bold'},
 	Noise       = 'Delimiter',
 
@@ -325,7 +325,7 @@ local highlight_groups = {
 	--[[ 4.2... Editor UI  ]]
 	--[[ 4.2.1. Status Line]]
 	StatusLine       = {fg=green_light, bg=gray_darker},
-	StatusLineNC     = function(self) return {fg=gray, bg=self.StatusLine.bg} end,
+	StatusLineNC     = function(self) return {fg=gray_darker, bg=self.StatusLine.bg} end,
 	StatusLineTerm   = 'StatusLine',
 	StatusLineTermNC = 'StatusLineNC',
 

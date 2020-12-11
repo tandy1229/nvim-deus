@@ -123,7 +123,7 @@ local green_light = {'#a0ff70', 72, 'green'}
 local blue     = {'#83a598', 109, 'darkblue'}
 local cyan     = {'#8ec07c', 108, 'aqua'}
 local ice      = {'#49a0f0', 63, 'cyan'}
-local teal     = {'#00d0c0', 38, 'cyan'}
+local teal     = {'#00a5f0', 38, 'cyan'}
 local turqoise = {'#2bff99', 33, 'blue'}
 
 local magenta      = {'#d5508f', 126, 'magenta'}
@@ -602,10 +602,17 @@ local highlight_groups = {
 	rubyInterpolationDelimiter = 'Delimiter',
 
 	--[[ 4.3.22. Rust ]]
-	rustKeyword   = 'Keyword',
-	rustModPath   = 'Include',
-	rustScopeDecl = 'Delimiter',
-	rustTrait     = 'StorageClass',
+	rustConstraint = 'Operator',
+	rustFieldName  = 'Label',
+	rustFieldSep   = 'Delimiter',
+	rustGeneric    = 'Delimiter',
+	rustIdentifier = 'Type',
+	rustKeyword    = 'Keyword',
+	rustModPath    = 'Include',
+	rustNoise      = 'Delimiter',
+	rustScopeDecl  = 'Delimiter',
+	rustStructure  = 'Structure',
+	rustTrait      = 'rustIdentifier',
 
 	--[[ 4.3.23. Scala ]]
 	scalaKeyword        = 'Keyword',
@@ -687,7 +694,8 @@ local highlight_groups = {
 	gitrebaseReset = 'gitrebaseLabel',
 	gitrebaseReword = 'gitrebasePick',
 	gitrebaseSquash = 'Macro',
-	gitrebaseSummary = 'Normal',
+	gitrebaseSummary = 'Title',
+	gitcommitSummary = 'Title',
 
 	--[[ 4.3.35. Vimtex ]]
 	texMathRegion   = 'Number',

@@ -606,13 +606,12 @@ local highlight_groups = {
 	rustFieldName  = 'Label',
 	rustFieldSep   = 'Delimiter',
 	rustGeneric    = 'Delimiter',
-	rustIdentifier = 'Type',
+  rustIdentifier = 'Identifier',
 	rustKeyword    = 'Keyword',
 	rustModPath    = 'Include',
 	rustNoise      = 'Delimiter',
 	rustScopeDecl  = 'Delimiter',
 	rustStructure  = 'Structure',
-	rustTrait      = 'rustIdentifier',
 
 	--[[ 4.3.23. Scala ]]
 	scalaKeyword        = 'Keyword',

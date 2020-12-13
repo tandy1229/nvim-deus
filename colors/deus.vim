@@ -284,8 +284,8 @@ local highlight_groups = {
 	Conditional = {fg=red,                style='italic'},
 	Repeat      = {fg=red,                style='bold'},
 	Label       = {fg=magenta_light1,     style='italic'},
-	Operator    = {fg=blue},
-	Keyword     = {fg=red,        style='italic'},
+	Operator    = {fg=blue,               style='bold'},
+	Keyword     = {fg=red,                style='italic'},
 	Exception   = {fg=red,                style='bold'},
 	Noise       = 'Delimiter',
 
@@ -638,6 +638,8 @@ local highlight_groups = {
 
 	--[[ 4.3.27. VimScript ]]
 	helpSpecial    = 'Special',
+	vimCmdSep      = 'Delimiter',
+	vimFunction    = 'Function',
 	vimFgBgAttrib  = 'Constant',
 	vimHiCterm     = 'Label',
 	vimHiCtermFgBg = 'vimHiCterm',
@@ -645,6 +647,7 @@ local highlight_groups = {
 	vimHiGui       = 'vimHiCterm',
 	vimHiGuiFgBg   = 'vimHiGui',
 	vimHiKeyList   = 'Operator',
+	vimIsCommand   = 'Identifier',
 	vimOption      = 'Keyword',
 	vimScriptDelim = 'Ignore',
 	vimSet         = 'String',

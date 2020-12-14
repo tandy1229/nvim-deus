@@ -282,8 +282,8 @@ local highlight_groups = {
 	--[[ 4.1.3. Syntax]]
 	Statement   = {fg=red,                style='bold'},
 	Conditional = {fg=red,                style='italic'},
-	Repeat      = {fg=red,                style='bold'},
-	Label       = {fg=magenta_light1,     style='italic'},
+	Repeat      = {fg=red,                style='italic'},
+	Label       = {fg=magenta_light1,     style='bold'},
 	Operator    = {fg=blue,               style='bold'},
 	Keyword     = {fg=red,                style='italic'},
 	Exception   = {fg=red,                style='bold'},
@@ -610,6 +610,7 @@ local highlight_groups = {
 	rustKeyword    = 'Keyword',
 	rustModPath    = 'Include',
 	rustNoise      = 'Delimiter',
+  rustPanic      = 'Exception',
 	rustScopeDecl  = 'Delimiter',
 	rustStructure  = 'Structure',
 
@@ -638,6 +639,9 @@ local highlight_groups = {
 
 	--[[ 4.3.27. VimScript ]]
 	helpSpecial    = 'Special',
+	helpHeader     = 'Label',
+	helpHeadline   = 'Title',
+	helpSectionDelim = 'Delimiter',
 	vimCmdSep      = 'Delimiter',
 	vimFunction    = 'Function',
 	vimFgBgAttrib  = 'Constant',
@@ -685,6 +689,10 @@ local highlight_groups = {
 	yamlKey = 'Label',
 
 	--[[ 4.3.34. Git ]]
+	gitcommitOverFlow = 'Error',
+	gitcommitSummary  = 'Title',
+	gitconfigAssignment = 'String',
+	gitconfigNone     = 'Oprator',
 	gitrebaseBreak  = 'Keyword',
 	gitrebaseCommit = 'Tag',
 	gitrebaseDrop = 'Exception',
@@ -692,12 +700,11 @@ local highlight_groups = {
 	gitrebaseExec = 'PreProc',
 	gitrebaseFixup = 'gitrebaseSquash',
 	gitrebaseMerge = 'PreProc',
-	gitrebasePick = 'Include',
+	gitrebasePick  = 'Include',
 	gitrebaseReset = 'gitrebaseLabel',
-	gitrebaseReword = 'gitrebasePick',
-	gitrebaseSquash = 'Macro',
+	gitrebaseReword  = 'gitrebasePick',
+	gitrebaseSquash  = 'Macro',
 	gitrebaseSummary = 'Title',
-	gitcommitSummary = 'Title',
 
 	--[[ 4.3.35. Vimtex ]]
 	texMathRegion   = 'Number',

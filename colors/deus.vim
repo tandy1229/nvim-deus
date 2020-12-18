@@ -250,6 +250,7 @@ local navyblue = {'#6699CC', 63,  'blue'}
 --[[ DO NOT EDIT `BG` NOR `FG`. ]]
 local BG = 'bg'
 local FG = 'fg'
+local NONE = {}
 
 --[[ These are the ones you should edit. ]]
 -- This is the only highlight that must be defined separately.
@@ -280,30 +281,30 @@ local highlight_groups = {
 	TSParameter = {fg=dslight2, style='italic'},
 
 	--[[ 4.1.3. Syntax]]
-	Statement   = {fg=red,                style='bold'},
-	Conditional = {fg=red,                style='italic'},
-	Repeat      = {fg=red,                style='italic'},
-	Label       = {fg=magenta_light1,     style='bold'},
-	Operator    = {fg=blue,               style='bold'},
-	Keyword     = {fg=red,                style='italic'},
-	Exception   = {fg=red,                style='bold'},
+	Statement   = {fg=red, style='bold'},
+	Conditional = {fg=red, style='italic'},
+	Repeat      = {fg=red, style='italic'},
+	Label       = {fg=magenta_light1, style='bold'},
+	Operator    = {fg=blue, style='bold'},
+	Keyword     = {fg=red, style='italic'},
+	Exception   = {fg=red, style='bold'},
 	Noise       = 'Delimiter',
 
 	--[[ 4.1.4. Metatextual Information]]
 	PreProc   = {fg=tan},
-	Include   = {fg=blue,        style='nocombine'},
-	Define    = {fg=blue,        style='nocombine'},
-	Macro     = {fg=blue,        style='italic'},
-	PreCondit = {fg=tan,         style='italic'},
+	Include   = {fg=blue, style='nocombine'},
+	Define    = {fg=blue, style='nocombine'},
+	Macro     = {fg=blue, style='italic'},
+	PreCondit = {fg=tan,  style='italic'},
 
 	--[[ 4.1.5. Semantics]]
 	Type         = {fg=yellow, style='italic'},
-	StorageClass = {fg=orange},
-	Structure    = {fg=blue,         style='bold'},
-	Typedef      = {fg=cyan,         style='italic'},
+	StorageClass = {fg=orange, style='bold'},
+	Structure    = {fg=blue, style='bold'},
+	Typedef      = {fg=cyan, style='italic'},
 
 	--[[ 4.1.6. Edge Cases]]
-	Special        = {fg=magenta,   style='bold'},
+	Special        = {fg=magenta, style='bold'},
 	SpecialChar    = {fg=red_light, style='italic'},
 	SpecialKey     = 'Character',
 	Tag            = 'Underlined',
@@ -315,9 +316,7 @@ local highlight_groups = {
 	Underlined        = {fg=turqoise, style='underline'},
 	Ignore            = {fg=gray},
 	Error             = {fg=white, bg=red_dark, style='bold'},
-	Todo              = {fg=yellow,   style={'bold', 'underline'}},
-	helpHyperTextJump = 'Underlined',
-	helpSpecial       = 'Function',
+	Todo              = {fg=yellow, style={'bold', 'underline'}},
 	Hint              = {fg=black,    bg=magenta, style='bold'},
 	Info              = function(self) return {fg=self.Hint.fg, bg=pink_light, style=self.Hint.style} end,
 	Warning           = function(self) return {fg=self.Hint.fg, bg=orange, style=self.Hint.style} end,
@@ -340,7 +339,6 @@ local highlight_groups = {
 	Conceal         = 'NonText',
 	CursorLine      = {bg=gray_dark},
 	CursorLineNr    = function(self) return {fg=dslight1, bg=self.CursorLine.bg} end,
-  -- CursorLineNr    = {bg=gray_darker, fg=dslight1},
 	debugBreakpoint = 'ErrorMsg',
 	debugPC         = 'ColorColumn',
 	LineNr          = {fg=gray},
@@ -367,8 +365,8 @@ local highlight_groups = {
 
 	--[[ 4.2.7. Searching]]
 	IncSearch  = {style='inverse'},
-	Search     = {bg=yellow, fg=dsdark2},
 	MatchParen = {bg=yellow, fg=green, style={'bold', 'underline'}},
+	Search     = {bg=yellow, fg=dsdark2},
 
 	--[[ 4.2.8. Spelling]]
 	SpellBad   = {style={'undercurl', color=red}},
@@ -405,7 +403,6 @@ local highlight_groups = {
 	LspDiagnosticsFloatingInformation = 'InfoMsg',
 	LspDiagnosticsSignInformation = 'LspDiagnosticsFloatingInformation',
 
-	LspDiagnosticsUnderline = {style={'undercurl', color=white}},
 	LspDiagnosticsUnderlineError = 'CocErrorHighlight',
 	LspDiagnosticsUnderlineHint  = 'CocHintHighlight',
 	LspDiagnosticsUnderlineInfo  = 'CocInfoHighlight',
@@ -433,39 +430,39 @@ local highlight_groups = {
 	cppSTLnamespace = 'String',
 
 	--[[ 4.3.3 C# ]]
-	csBraces     = 'Delimiter',
-	csClass      = 'Structure',
-	csClassType  = 'Type',
+	csBraces = 'Delimiter',
+	csClass  = 'Structure',
+	csClassType = 'Type',
 	csContextualStatement = 'Conditional',
-	csEndColon   = 'Delimiter',
-	csGeneric    = 'Typedef',
+	csEndColon = 'Delimiter',
+	csGeneric  = 'Typedef',
 	csInterpolation = 'Include',
 	csInterpolationDelimiter = 'SpecialChar',
 	csLogicSymbols  = 'Operator',
-	csModifier   = 'Keyword',
-	csNew        = 'Operator',
-	csNewType    = 'Type',
-	csParens     = 'Delimiter',
+	csModifier = 'Keyword',
+	csNew = 'Operator',
+	csNewType = 'Type',
+	csParens  = 'Delimiter',
 	csPreCondit  = 'PreProc',
-	csRepeat     = 'Repeat',
-	csStorage    = 'StorageClass',
+	csRepeat  = 'Repeat',
+	csStorage = 'StorageClass',
 	csUnspecifiedStatement = 'Statement',
-	csXmlTag     = 'Define',
+	csXmlTag = 'Define',
 	csXmlTagName = 'Define',
 
 	--[[ 4.3.4. CSS ]]
-	cssBraces     = 'Delimiter',
-	cssProp       = 'Keyword',
+	cssBraces = 'Delimiter',
+	cssProp   = 'Keyword',
 	cssSelectorOp = 'Operator',
-	cssTagName    = 'Type',
-	cssTagName    = 'htmlTagName',
+	cssTagName = 'Type',
+	cssTagName = 'htmlTagName',
 	scssAmpersand = 'Special',
 	scssAttribute = 'Label',
 	scssBoolean   = 'Boolean',
-	scssDefault   = 'Keyword',
-	scssElse      = 'PreCondit',
-	scssIf        = 'PreCondit',
-	scssInclude   = 'Include',
+	scssDefault = 'Keyword',
+	scssElse = 'PreCondit',
+	scssIf   = 'PreCondit',
+	scssInclude = 'Include',
 	scssSelectorChar = 'Operator',
 	scssSelectorName = 'Identifier',
 	scssVariable  = 'Define',
@@ -479,43 +476,43 @@ local highlight_groups = {
 	dotType    = 'Type',
 
 	--[[ 4.3.7. Go ]]
-	goBlock                 = 'Delimiter',
-	goBoolean               = 'Boolean',
-	goBuiltins              = 'Operator',
-	goField                 = 'Identifier',
-	goFloat                 = 'Float',
-	goFormatSpecifier       = 'Character',
-	goFunction              = 'Function',
-	goFunctionCall          = 'goFunction',
-	goFunctionReturn        = {},
-	goMethodCall            = 'goFunctionCall',
-	goParamType             = 'goReceiverType',
-	goPointerOperator       = 'SpecialChar',
+	goBlock    = 'Delimiter',
+	goBoolean  = 'Boolean',
+	goBuiltins = 'Operator',
+	goField    = 'Identifier',
+	goFloat    = 'Float',
+	goFormatSpecifier = 'Character',
+	goFunction = 'Function',
+	goFunctionCall   = 'goFunction',
+	goFunctionReturn = NONE,
+	goMethodCall = 'goFunctionCall',
+	goParamType  = 'goReceiverType',
+	goPointerOperator = 'SpecialChar',
 	goPredefinedIdentifiers = 'Constant',
-	goReceiver              = 'goBlock',
-	goReceiverType          = 'goTypeName',
-	goSimpleParams          = 'goBlock',
-	goType                  = 'Type',
-	goTypeConstructor       = 'goFunction',
-	goTypeName              = 'Type',
-	goVarAssign             = 'Identifier',
-	goVarDefs               = 'goVarAssign',
+	goReceiver     = 'goBlock',
+	goReceiverType = 'goTypeName',
+	goSimpleParams = 'goBlock',
+	goType = 'Type',
+	goTypeConstructor = 'goFunction',
+	goTypeName  = 'Type',
+	goVarAssign = 'Identifier',
+	goVarDefs   = 'goVarAssign',
 
 	--[[ 4.3.8. HTML ]]
-	htmlArg     = 'Label',
-	htmlBold    = {fg=gray_light, style='bold'},
-	htmlTitle   = 'htmlBold',
-	htmlEndTag  = 'htmlTag',
-	htmlH1      = 'markdownH1',
-	htmlH2      = 'markdownH2',
-	htmlH3      = 'markdownH3',
-	htmlH4      = 'markdownH4',
-	htmlH5      = 'markdownH5',
-	htmlH6      = 'markdownH6',
+	htmlArg    = 'Label',
+	htmlBold   = {fg=gray_light, style='bold'},
+	htmlTitle  = 'htmlBold',
+	htmlEndTag = 'htmlTag',
+	htmlH1 = 'markdownH1',
+	htmlH2 = 'markdownH2',
+	htmlH3 = 'markdownH3',
+	htmlH4 = 'markdownH4',
+	htmlH5 = 'markdownH5',
+	htmlH6 = 'markdownH6',
 	htmlItalic  = {style='italic'},
 	htmlSpecialTagName = 'Keyword',
-	htmlTag     = 'Special',
-	htmlTagN    = 'Typedef',
+	htmlTag  = 'Special',
+	htmlTagN = 'Typedef',
 	htmlTagName = 'Type',
 
 	--[[ 4.3.9. Java ]]
@@ -529,7 +526,7 @@ local highlight_groups = {
 
 	--[[ 4.3.11. JSON ]]
 	jsonBraces = 'luaBraces',
-  jsonEscape = 'SpecialChar',
+	jsonEscape = 'SpecialChar',
 	jsonKeywordMatch = 'Operator',
 	jsonNull   = 'Constant',
 	jsonQuote  = 'Delimiter',
@@ -537,20 +534,21 @@ local highlight_groups = {
 	jsonStringSQError = 'Exception',
 
 	--[[ 4.3.12. Lua ]]
-	luaBraces       = 'Structure',
-	luaBrackets     = 'Delimiter',
-	luaBuiltin      = 'Keyword',
-	luaComma        = 'Delimiter',
-	luaFuncArgName  = 'Identifier',
-	luaFuncCall     = 'Function',
-	luaFuncId       = 'luaNoise',
-	luaFuncKeyword  = 'Type',
-	luaFuncName     = 'Function',
-	luaFuncParens   = 'Delimiter',
-	luaFuncTable    = 'Structure',
-	luaLocal        = 'Type',
-	luaNoise        = 'Operator',
-	luaParens       = 'Delimiter',
+	luaBraces   = 'Structure',
+	luaBrackets = 'Delimiter',
+	luaBuiltin  = 'Keyword',
+	luaComma    = 'Delimiter',
+	luaFuncArgName = 'Identifier',
+	luaFuncCall = 'Function',
+	luaFuncId   = 'luaNoise',
+	luaFuncKeyword = 'Type',
+	luaFuncName   = 'Function',
+	luaFuncParens = 'Delimiter',
+	luaFuncTable  = 'Structure',
+	luaIn     = 'luaRepeat',
+	luaLocal  = 'Type',
+	luaNoise  = 'Operator',
+	luaParens = 'Delimiter',
 	luaSpecialTable = 'StorageClass',
 	luaSpecialValue = 'Function',
 
@@ -559,72 +557,74 @@ local highlight_groups = {
 	makeSpecTarget = 'Type',
 
 	--[[ 4.3.13. Markdown ]]
-	markdownH1          = {fg=red, style='bold'},
-	markdownH2          = {fg=orange, style='bold'},
-	markdownH3          = {fg=yellow, style='bold'},
-	markdownH4          = {fg=green_dark, style='bold'},
-	markdownH5          = {fg=cyan, style='bold'},
-	markdownH6          = {fg=purple_light, style='bold'},
-	mkdBold             = 'SpecialComment',
-	mkdCode             = 'Keyword',
-	mkdCodeDelimiter    = 'mkdBold',
-	mkdCodeStart        = 'mkdCodeDelimiter',
-	mkdCodeEnd          = 'mkdCodeStart',
-	mkdHeading          = 'Delimiter',
-	mkdItalic           = 'mkdBold',
-	mkdListItem         = 'Special',
-	mkdRule             = 'Underlined',
+	markdownH1 = {fg=red, style='bold'},
+	markdownH2 = {fg=orange, style='bold'},
+	markdownH3 = {fg=yellow, style='bold'},
+	markdownH4 = {fg=green_dark, style='bold'},
+	markdownH5 = {fg=cyan, style='bold'},
+	markdownH6 = {fg=purple_light, style='bold'},
+	mkdBold = 'Ignore',
+	mkdCode = 'Keyword',
+	mkdCodeDelimiter = 'mkdBold',
+	mkdCodeStart = 'mkdCodeDelimiter',
+	mkdCodeEnd = 'mkdCodeStart',
+	mkdHeading = 'Delimiter',
+	mkdItalic  = 'mkdBold',
+	mkdLineBreak = 'NonText',
+	mkdListItem  = 'Special',
+	mkdRule = function(self) return {fg=self.Ignore.fg, style={'underline', color=self.Delimiter.fg}} end,
 
 	--[[ 4.3.20. Python ]]
-	pythonBrackets        = 'Delimiter',
-	pythonBuiltinFunc     = 'Operator',
-	pythonBuiltinObj      = 'Type',
-	pythonBuiltinType     = 'Type',
-	pythonClass           = 'Structure',
+	pythonBrackets    = 'Delimiter',
+	pythonBuiltinFunc = 'Operator',
+	pythonBuiltinObj  = 'Type',
+	pythonBuiltinType = 'Type',
+	pythonClass       = 'Structure',
 	pythonClassParameters = 'pythonParameters',
-	pythonDecorator       = 'PreProc',
-	pythonDottedName      = 'Identifier',
-	pythonError           = 'Error',
-	pythonException       = 'Exception',
-	pythonInclude         = 'Include',
-	pythonIndentError     = 'pythonError',
-	pythonLambdaExpr      = 'pythonOperator',
-	pythonOperator        = 'Operator',
-	pythonParam           = 'Identifier',
-	pythonParameters      = 'Delimiter',
-	pythonSelf            = 'Statement',
-	pythonSpaceError      = 'pythonError',
-	pythonStatement       = 'Statement',
+	pythonDecorator  = 'PreProc',
+	pythonDottedName = 'Identifier',
+	pythonError     = 'Error',
+	pythonException = 'Exception',
+	pythonInclude   = 'Include',
+	pythonIndentError = 'pythonError',
+	pythonLambdaExpr  = 'pythonOperator',
+	pythonOperator = 'Operator',
+	pythonParam    = 'Identifier',
+	pythonParameters = 'Delimiter',
+	pythonSelf = 'Statement',
+	pythonSpaceError = 'pythonError',
+	pythonStatement  = 'Statement',
 
 	--[[ 4.3.21. Ruby ]]
-	rubyClass                  = 'Structure',
-	rubyDefine                 = 'Define',
+	rubyClass  = 'Structure',
+	rubyDefine = 'Define',
 	rubyInterpolationDelimiter = 'Delimiter',
 
 	--[[ 4.3.22. Rust ]]
 	rustConstraint = 'Operator',
-	rustFieldName  = 'Label',
-	rustFieldSep   = 'Delimiter',
-	rustGeneric    = 'Delimiter',
-  rustIdentifier = 'Identifier',
-	rustKeyword    = 'Keyword',
-	rustModPath    = 'Include',
-	rustNoise      = 'Delimiter',
-  rustPanic      = 'Exception',
-	rustScopeDecl  = 'Delimiter',
-	rustStructure  = 'Structure',
+	rustFieldName = 'Label',
+	rustFieldSep  = 'Delimiter',
+	rustGeneric   = 'Delimiter',
+	rustIdentifier = 'Identifier',
+	rustKeyword = 'Keyword',
+	rustModPath = 'Include',
+	rustNoise  = 'Delimiter',
+	rustPanic  = 'Exception',
+	rustRepeat = 'Repeat',
+	rustScopeDecl = 'Delimiter',
+	rustStructure = 'Structure',
 
 	--[[ 4.3.23. Scala ]]
-	scalaKeyword        = 'Keyword',
+	scalaKeyword = 'Keyword',
 	scalaNameDefinition = 'Identifier',
 
 	--[[ 4.3.24. shell ]]
 	shDerefSimple = 'SpecialChar',
 	shFunctionKey = 'Function',
-	shLoop    = 'Repeat',
-	shParen   = 'Delimiter',
-	shQuote   = 'Delimiter',
-	shSet     = 'Statement',
+	shLoop  = 'Repeat',
+	shParen = 'Delimiter',
+	shQuote = 'Delimiter',
+	shSet   = 'Statement',
 	shTestOpr = 'Debug',
 
 	--[[ 4.3.25. Solidity ]]
@@ -634,41 +634,37 @@ local highlight_groups = {
 
 	--[[ 4.3.26. TOML ]]
 	tomlComment = 'Comment',
-	tomlKey     = 'Label',
-	tomlTable   = 'Structure',
+	tomlKey   = 'Label',
+	tomlTable = 'Structure',
 
 	--[[ 4.3.27. VimScript ]]
-	helpSpecial    = 'Special',
-	helpHeader     = 'Label',
-	helpHeadline   = 'Title',
-	helpSectionDelim = 'Delimiter',
-	vimCmdSep      = 'Delimiter',
-	vimFunction    = 'Function',
-	vimFgBgAttrib  = 'Constant',
-	vimHiCterm     = 'Label',
+	vimCmdSep     = 'Delimiter',
+	vimFunction   = 'Function',
+	vimFgBgAttrib = 'Constant',
+	vimHiCterm    = 'Label',
 	vimHiCtermFgBg = 'vimHiCterm',
-	vimHiGroup     = 'Typedef',
-	vimHiGui       = 'vimHiCterm',
-	vimHiGuiFgBg   = 'vimHiGui',
-	vimHiKeyList   = 'Operator',
-	vimIsCommand   = 'Identifier',
-	vimOption      = 'Keyword',
+	vimHiGroup   = 'Typedef',
+	vimHiGui     = 'vimHiCterm',
+	vimHiGuiFgBg = 'vimHiGui',
+	vimHiKeyList = 'Operator',
+	vimIsCommand = 'Identifier',
+	vimOption    = 'Keyword',
 	vimScriptDelim = 'Ignore',
-	vimSet         = 'String',
-	vimSetEqual    = 'Operator',
-	vimSetSep      = 'Delimiter',
+	vimSet      = 'String',
+	vimSetEqual = 'Operator',
+	vimSetSep   = 'Delimiter',
 
 	--[[ 4.3.28. XML ]]
-	xmlAttrib  = 'htmlArg',
-	xmlEndTag  = 'xmlTag',
-	xmlEqual   = 'Operator',
-	xmlTag     = 'htmlTag',
+	xmlAttrib = 'htmlArg',
+	xmlEndTag = 'xmlTag',
+	xmlEqual  = 'Operator',
+	xmlTag    = 'htmlTag',
 	xmlTagName = 'htmlTagName',
 
 	--[[ 4.3.29. SQL ]]
-	sqlKeyword   = 'Keyword',
-	sqlParen     = 'Delimiter',
-	sqlSpecial   = 'Constant',
+	sqlKeyword = 'Keyword',
+	sqlParen   = 'Delimiter',
+	sqlSpecial = 'Constant',
 	sqlStatement = 'Statement',
 	sqlParenFunc = 'Function',
 
@@ -683,7 +679,7 @@ local highlight_groups = {
 	crontabMnth = 'Structure',
 
 	--[[ 4.3.32. PlantUML ]]
-	plantumlColonLine = {},
+	plantumlColonLine = NONE,
 
 	--[[ 4.3.33. YAML ]]
 	yamlKey = 'Label',
@@ -692,8 +688,8 @@ local highlight_groups = {
 	gitcommitOverFlow = 'Error',
 	gitcommitSummary  = 'Title',
 	gitconfigAssignment = 'String',
-	gitconfigNone     = 'Oprator',
-	gitrebaseBreak  = 'Keyword',
+	gitconfigNone  = 'Oprator',
+	gitrebaseBreak = 'Keyword',
 	gitrebaseCommit = 'Tag',
 	gitrebaseDrop = 'Exception',
 	gitrebaseEdit = 'Define',
@@ -707,9 +703,9 @@ local highlight_groups = {
 	gitrebaseSummary = 'Title',
 
 	--[[ 4.3.35. Vimtex ]]
-	texMathRegion   = 'Number',
-	texMathSub      = 'Number',
-	texMathSuper    = 'Number',
+	texMathRegion = 'Number',
+	texMathSub   = 'Number',
+	texMathSuper = 'Number',
 	texMathRegionX  = 'Number',
 	texMathRegionXX = 'Number',
 
@@ -731,6 +727,14 @@ local highlight_groups = {
 	coqTermPunctuation = 'Delimiter',
 	coqVernacCmd = 'Statement',
 	coqVernacPunctuation = 'coqTermPunctuation',
+
+	--[[ 4.3.37 Help ]]
+	helpSpecial  = 'Special',
+	helpHeader   = 'Label',
+	helpHeadline = 'Title',
+	helpSectionDelim = 'Delimiter',
+	helpHyperTextJump = 'Underlined',
+	helpSpecial = 'Function',
 
 	--[[ 4.4. Plugins
 		Everything in this section is OPTIONAL. Feel free to remove everything
@@ -756,29 +760,10 @@ local highlight_groups = {
 	JumpMotion = 'EasyMotion',
 
 	--[[ 4.4.4. vim-gitgutter / vim-signify ]]
-	GitGutterAdd          = {fg=green},
-	GitGutterChange       = {fg=yellow},
-	GitGutterDelete       = {fg=red},
+	GitGutterAdd    = {fg = green},
+	GitGutterChange = {fg = yellow},
+	GitGutterDelete = {fg = red},
 	GitGutterChangeDelete = {fg=orange},
-
-	SignifySignAdd    = 'GitGutterAdd',
-	SignifySignChange = 'GitGutterChange',
-	SignifySignDelete = 'GitGutterDelete',
-	SignifySignChangeDelete = 'GitGutterChangeDelete',
-
-	--[[ 4.4.5. vim-indent-guides ]]
-	IndentGuidesOdd  = {bg=gray_darker},
-	IndentGuidesEven = {bg=gray},
-
-	--[[ 4.4.7. NERDTree ]]
-	NERDTreeCWD = 'Label',
-	NERDTreeUp  = 'Operator',
-	NERDTreeDir = 'Directory',
-	NERDTreeDirSlash = 'Delimiter',
-	NERDTreeOpenable = 'NERDTreeDir',
-	NERDTreeClosable = 'NERDTreeOpenable',
-	NERDTreeExecFile = 'Function',
-	NERDTreeLinkTarget = 'Tag',
 
 	--[[ 4.4.8. nvim-treesitter ]]
 	TSConstBuiltin = 'Constant',
@@ -788,34 +773,6 @@ local highlight_groups = {
 	TSStringRegex  = 'SpecialChar',
 	TSURI = 'Tag',
 	TSVariableBuiltin = 'Identifier',
-
-	--[[ 4.4.9. barbar.nvim ]]
-	BufferCurrent       = 'TabLineSel',
-	BufferCurrentIndex  = function(self) return {fg=self.InfoMsg.fg, bg=self.BufferCurrent.bg} end,
-	BufferCurrentMod    = {fg=tan, bg=black, style='bold'},
-	BufferCurrentSign   = 'HintMsg',
-	BufferCurrentTarget = 'BufferCurrentSign',
-
-	BufferInactive       = 'BufferVisible',
-	BufferInactiveIndex  = function(self) return {fg=self.InfoMsg.fg, bg=self.BufferInactive.bg} end,
-	BufferInactiveMod    = 'BufferVisibleMod',
-	BufferInactiveSign   = 'BufferVisibleSign',
-	BufferInactiveTarget = 'BufferVisibleTarget',
-
-	BufferTabpages    = {fg=BG, bg=FG, style='bold'},
-	BufferTabpageFill = 'TabLineFill',
-
-	BufferVisible       = 'TabLine',
-	BufferVisibleIndex  = function(self) return {fg=self.InfoMsg.fg, bg=self.BufferVisible.bg} end,
-	BufferVisibleMod    = {fg=white, bg=gray_darker, style='italic'},
-	BufferVisibleSign   = 'BufferVisible',
-	BufferVisibleTarget = function(self)
-		local parent = self.BufferVisibleMod
-		return {fg=parent.fg, bg=parent.bg, style='bold'}
-	end,
-
-	--[[ 4.4.10. vim-sandwhich ]]
-	OperatorSandwichChange = 'DiffText',
 }
 
 --[[ Step 5: Terminal Colors
@@ -823,14 +780,11 @@ local highlight_groups = {
 	or in TUI Vim when 'termguicolors' is enabled. If this list
 	is empty or if it doesn't contain exactly 16 items, the corresponding
 	Vim variable won't be set.
-
 	The expected values are colors defined in step 3.
-
 	Terminal emulators use a basic palette of 16 colors that can be
 	addressed by CLI and TUI tools via their name or their index, from
 	0 to 15. The list is not really standardized but it is generally
 	assumed to look like this:
-
 	 | Index  | Name          |
 	 |:------:|:-------------:|
 	 | 1      | black         |
@@ -849,37 +803,34 @@ local highlight_groups = {
 	 | 14     | magenta       |
 	 | 15     | cyan          |
 	 | 16     | white         |
-
 	While you are certainly free to make colors 0 to 7 shades of blue,
 	this will inevitably cause usability issues so… be careful.
 ]]
 
 local terminal_ansi_colors = {
-	[1]  = '#000000',
-	[2]  = '#FF5555',
-	[3]  = '#50FA7B',
-	[4]  = '#F1FA8C',
-	[5]  = '#BD93F9',
-	[6]  = '#FF79C6',
-	[7]  = '#8BE9FD',
-	[8]  = '#BFBFBF',
-	[9]  = '#4D4D4D',
-	[10] = '#FF6E67',
-	[11] = '#5AF78E',
-	[12] = '#F4F99D',
-	[13] = '#CAA9FA',
-	[14] = '#FF92D0',
-	[15] = '#9AEDFE',
+	[1]  = black,
+	[2]  = red_dark,
+	[3]  = green_dark,
+	[4]  = orange,
+	[5]  = blue,
+	[6]  = magenta_dark,
+	[7]  = teal,
+	[8]  = gray,
+	[9]  = gray_dark,
+	[10] = red,
+	[11] = green,
+	[12] = yellow,
+	[13] = turqoise,
+	[14] = purple,
+	[15] = cyan,
 	[16] = gray_light
 }
 
 --[[ Step 5: Sourcing
 	When you wish to load your colorscheme, simply add this folder with a plugin manager
 	and then use `colorscheme <your colorscheme name>`. For example, in my configuration,
-	I source deus by using `colorscheme deus`.
-
+	I source highlite by using `colorscheme highlite`.
 	These online resources can help you design your colorscheme:
-
 	1. the xterm palette.
 		* http://upload.wikimedia.org/wikipedia/en/1/15/Xterm_256color_chart.svg
 	2. play with hexadecimal colors right in the address bar (currently down).
@@ -904,9 +855,7 @@ local terminal_ansi_colors = {
 		* http://vrl.cs.brown.edu/color
 	12. 'I Made My Own Colour Scheme and You Can Too!'.
 		* https://cmcenroe.me/2018/04/03/colour-scheme.html
-
 	A few things to note:
-
 	* The Windows console (`cmd`) is limited to the 16 so-called 'ANSI' colors but it used to
 			have a few of them interverted which makes numbers impractical. Use color names
 			instead of numbers: :help cterm-colors

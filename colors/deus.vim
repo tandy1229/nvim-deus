@@ -331,7 +331,7 @@ local highlight_groups = {
 	--[[ 4.2.2. Separators]]
 	VertSplit   = {fg=dslight1},
 	TabLine     = {bg=gray_darker, fg=dsdark4},
-	TabLineFill = {bg=blue},
+	TabLineFill = {bg=gray_darker},
 	TabLineSel  = {fg=dslight3},
 	Title       = {fg=dslight3, style='bold'},
 
@@ -376,7 +376,7 @@ local highlight_groups = {
 
 	--[[ 4.2.9. Conditional Column Highlighting]]
 	ColorColumn = {bg=dsColumn}, -- important
-	SignColumn  = {},
+	SignColumn  = NONE,
 
 	--[[ 4.2.10. Messages]]
 	ErrorMsg   = {fg=red,          style='bold'},
@@ -773,6 +773,31 @@ local highlight_groups = {
 	TSStringRegex  = 'SpecialChar',
 	TSURI = 'Tag',
 	TSVariableBuiltin = 'Identifier',
+
+	--[[ 4.4.9. barbar.nvim ]]
+	BufferCurrent       = 'TabLineSel',
+	BufferCurrentIndex  = function(self) return {fg=self.InfoMsg.fg, bg=self.BufferCurrent.bg} end,
+	BufferCurrentMod    = {fg=tan, bg=black, style='bold'},
+	BufferCurrentSign   = 'HintMsg',
+	BufferCurrentTarget = 'BufferCurrentSign',
+
+	BufferInactive       = 'BufferVisible',
+	BufferInactiveIndex  = function(self) return {fg=self.InfoMsg.fg, bg=self.BufferInactive.bg} end,
+	BufferInactiveMod    = 'BufferVisibleMod',
+	BufferInactiveSign   = 'BufferVisibleSign',
+	BufferInactiveTarget = 'BufferVisibleTarget',
+
+	BufferTabpages    = {fg=BG, bg=FG, style='bold'},
+	BufferTabpageFill = 'TabLineFill',
+
+	BufferVisible       = 'TabLine',
+	BufferVisibleIndex  = function(self) return {fg=self.InfoMsg.fg, bg=self.BufferVisible.bg} end,
+	BufferVisibleMod    = {fg=white, bg=gray_darker, style='italic'},
+	BufferVisibleSign   = 'BufferVisible',
+	BufferVisibleTarget = function(self)
+		local parent = self.BufferVisibleMod
+		return {fg=parent.fg, bg=parent.bg, style='bold'}
+	end,
 }
 
 --[[ Step 5: Terminal Colors

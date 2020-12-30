@@ -315,7 +315,7 @@ local highlight_groups = {
 	--[[ 4.1.7. Help Syntax]]
 	Underlined        = {fg=turqoise, style='underline'},
 	Ignore            = {fg=gray},
-	Error             = {fg=white, bg=red_dark, style='bold'},
+	Error             = {fg=red, style='bold'},
 	Todo              = {fg=yellow, style={'bold', 'underline'}},
 	Hint              = {fg=black,    bg=magenta, style='bold'},
 	Info              = function(self) return {fg=self.Hint.fg, bg=pink_light, style=self.Hint.style} end,
@@ -686,10 +686,16 @@ local highlight_groups = {
 	yamlKey = 'Label',
 
 	--[[ 4.3.34. Git ]]
+	gitcommitHeader = 'SpecialComment',
 	gitcommitOverFlow = 'Error',
+	gitcommitSelectedFile = 'Directory',
 	gitcommitSummary  = 'Title',
+	gitcommitUntrackedFile = 'gitcommitSelectedFile',
 	gitconfigAssignment = 'String',
-	gitconfigNone  = 'Oprator',
+	gitconfigEscape = 'SpecialChar',
+	gitconfigNone  = 'Operator',
+	gitconfigSection = 'Structure',
+	gitconfigVariable = 'Label',
 	gitrebaseBreak = 'Keyword',
 	gitrebaseCommit = 'Tag',
 	gitrebaseDrop = 'Exception',
@@ -759,7 +765,7 @@ local highlight_groups = {
 	EasyMotion = 'IncSearch',
 	JumpMotion = 'EasyMotion',
 
-	--[[ 4.4.4. vim-gitgutter / vim-signify ]]
+	--[[ 4.4.4. vim-gitgutter / vim-signify / coc-git ]]
 	GitGutterAdd    = {fg = green},
 	GitGutterChange = {fg = yellow},
 	GitGutterDelete = {fg = red},
@@ -798,6 +804,9 @@ local highlight_groups = {
 		local parent = self.BufferVisibleMod
 		return {fg=parent.fg, bg=parent.bg, style='bold'}
 	end,
+
+	--[[ 4.4.11. Fern ]]
+	FernBranchText = 'Directory',
 }
 
 --[[ Step 5: Terminal Colors

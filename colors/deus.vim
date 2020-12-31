@@ -477,7 +477,6 @@ local highlight_groups = {
 
 	--[[ 4.3.7. Go ]]
 	goBlock    = 'Delimiter',
-	goBoolean  = 'Boolean',
 	goBuiltins = 'Operator',
 	goField    = 'Identifier',
 	goFloat    = 'Float',
@@ -771,7 +770,10 @@ local highlight_groups = {
 	GitGutterAdd    = {fg = green},
 	GitGutterChange = {fg = yellow},
 	GitGutterDelete = {fg = red},
-	GitGutterChangeDelete = {fg=orange},
+	GitGutterChangeDelete = {fg = orange},
+	DiffAdd = {fg = green},
+	DiffChange = {fg = yellow},
+	DiffDelete = {fg = red},
 
 	--[[ 4.4.8. nvim-treesitter ]]
 	TSConstBuiltin = 'Constant',
@@ -806,9 +808,6 @@ local highlight_groups = {
 		local parent = self.BufferVisibleMod
 		return {fg=parent.fg, bg=parent.bg, style='bold'}
 	end,
-
-	--[[ 4.4.11. Fern ]]
-	FernBranchText = 'Directory',
 }
 
 --[[ Step 5: Terminal Colors

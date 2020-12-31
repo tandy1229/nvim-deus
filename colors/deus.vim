@@ -357,7 +357,8 @@ local highlight_groups = {
 	FoldColumn = {bg=gray_darker, style='bold'},
 	Folded     = {bg=dsdark2,  fg=magenta, style='italic'},
 
-	--[[ 4.2.6. Diffs]]
+	--[[ 4.2.6. Diffs | used for coc-git... ]]
+	-- if you use coc-git, the default highlight group is this, but I suggest you to use the highlight group of GitGutter, add on you coc-settings.json
 	DiffAdd    = {fg=green_dark, style='inverse'},
 	DiffChange = {fg=yellow,     style='inverse'},
 	DiffDelete = function(self) return {fg=self.DiffAdd.fg, bg=red} end,
@@ -596,6 +597,9 @@ local highlight_groups = {
 
 	--[[ 4.3.21. Ruby ]]
 	rubyClass  = 'Structure',
+	rubyConstant = 'Constant',
+	rubyIdentifier = 'Identifier',
+	rubyFunction = 'Function',
 	rubyDefine = 'Define',
 	rubyInterpolationDelimiter = 'Delimiter',
 
@@ -766,14 +770,11 @@ local highlight_groups = {
 	EasyMotion = 'IncSearch',
 	JumpMotion = 'EasyMotion',
 
-	--[[ 4.4.4. vim-gitgutter / vim-signify / coc-git ]]
+	--[[ 4.4.4. vim-gitgutter / vim-signify ]]
 	GitGutterAdd    = {fg = green},
 	GitGutterChange = {fg = yellow},
 	GitGutterDelete = {fg = red},
 	GitGutterChangeDelete = {fg = orange},
-	DiffAdd = {fg = green},
-	DiffChange = {fg = yellow},
-	DiffDelete = {fg = red},
 
 	--[[ 4.4.8. nvim-treesitter ]]
 	TSConstBuiltin = 'Constant',

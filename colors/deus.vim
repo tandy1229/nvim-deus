@@ -360,6 +360,7 @@ local highlight_groups = {
 	--[[ 4.2.6. Diffs | used for coc-git... ]]
 	-- if you use coc-git, the default highlight group is this, but I suggest you to use the highlight group of GitGutter, add on you coc-settings.json
 	DiffAdd    = {fg=green_dark, style='inverse'},
+	DiffAdded  = {fg=green_dark, style='bold'},
 	DiffChange = {fg=yellow,     style='inverse'},
 	DiffDelete = function(self) return {fg=self.DiffAdd.fg, bg=red} end,
 	DiffText   = function(self) return {fg=self.DiffAdd.fg, bg=yellow} end,

@@ -275,10 +275,6 @@ local highlight_groups = {
 	--[[ 4.1.2. Identifiers]]
 	Identifier = {fg=blue},
 	Function   = {fg=green, style='bold'},
-	TSVariableBuiltin = {fg=orange},
-	TSConstBuiltin = {fg=orange, style='italic'},
-	TSAttribute = {fg=blue, style='italic'},
-	TSParameter = {fg=dslight2, style='italic'},
 
 	--[[ 4.1.3. Syntax]]
 	Statement   = {fg=red, style='bold'},
@@ -315,7 +311,7 @@ local highlight_groups = {
 	--[[ 4.1.7. Help Syntax]]
 	Underlined        = {fg=turqoise, style='underline'},
 	Ignore            = {fg=gray},
-	Error             = {fg=red, style='bold'},
+	Error             = {fg=white, bg=red_dark, style='bold'},
 	Todo              = {fg=yellow, style={'bold', 'underline'}},
 	Hint              = {fg=black,    bg=magenta, style='bold'},
 	Info              = function(self) return {fg=self.Hint.fg, bg=pink_light, style=self.Hint.style} end,
@@ -778,15 +774,6 @@ local highlight_groups = {
 	GitGutterChange = {fg = yellow},
 	GitGutterDelete = {fg = red},
 	GitGutterChangeDelete = {fg = orange},
-
-	--[[ 4.4.8. nvim-treesitter ]]
-	TSConstBuiltin = 'Constant',
-	TSConstructor  = 'Typedef',
-	TSFuncBuiltin  = 'Function',
-	TSStringEscape = 'Character',
-	TSStringRegex  = 'SpecialChar',
-	TSURI = 'Tag',
-	TSVariableBuiltin = 'Identifier',
 
 	--[[ 4.4.9. barbar.nvim ]]
 	BufferCurrent       = 'TabLineSel',

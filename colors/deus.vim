@@ -683,7 +683,11 @@ local highlight_groups = {
 	crontabMnth = 'Structure',
 
 	--[[ 4.3.32. PlantUML ]]
+	plantumlArrowLR   = 'Statement',
 	plantumlColonLine = NONE,
+	plantumlMindmap   = 'Label',
+	plantumlMindmap2  = 'Label',
+
 
 	--[[ 4.3.33. YAML ]]
 	yamlKey = 'Label',

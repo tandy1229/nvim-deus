@@ -153,55 +153,52 @@ function highlite.highlight(highlight_group, attributes) -- {{{ †
 end --}}} ‡
 
 function highlite:highlight_terminal(terminal_ansi_colors)
-	for index, color in ipairs(terminal_ansi_colors) do
-		vim.g['terminal_color_'..index] = vim.o.termguicolors and color[_PALETTE_HEX] or color[_PALETTE_256] or get(color, _PALETTE_ANSI)
+	for index, color in ipairs(terminal_ansi_colors) do vim.g['terminal_color_'..(index-1)] =
+		vim.o.termguicolors and color[_PALETTE_HEX] or color[_PALETTE_256] or get(color, _PALETTE_ANSI)
 	end
 end
 
-return setmetatable(highlite, {
-	['__call'] = function(self, normal, highlights, terminal_ansi_colors)
-		-- function to resolve function highlight groups being defined by function calls.
-		local function resolve(tbl, key, resolve_links)
-			local value = tbl[key]
-			local value_type = type(value)
-			if value_type == 'function' then
-				-- lazily cache the result; next time, if it isn't a function this step will be skipped
-				tbl[key] = value(setmetatable({}, {
-					['__index'] = function(_, inner_key) return resolve(tbl, inner_key, true) end
-				}))
-			elseif value_type == _TYPE_STRING and not string.find(value, '^#') and resolve_links then
-				return resolve(tbl, tbl[key], resolve_links)
-			end
-
-			return tbl[key]
+return setmetatable(highlite, {['__call'] = function(self, normal, highlights, terminal_ansi_colors)
+	-- function to resolve function highlight groups being defined by function calls.
+	local function resolve(tbl, key, resolve_links)
+		local value = tbl[key]
+		local value_type = type(value)
+		if value_type == 'function' then
+			-- lazily cache the result; next time, if it isn't a function this step will be skipped
+			tbl[key] = value(setmetatable({}, {
+				['__index'] = function(_, inner_key) return resolve(tbl, inner_key, true) end
+			}))
+		elseif value_type == _TYPE_STRING and not string.find(value, '^#') and resolve_links then
+			return resolve(tbl, tbl[key], resolve_links)
 		end
 
-
-		-- save the colors_name before syntax reset
-		local color_name = vim.g.colors_name
-
-		-- Clear the highlighting.
-		exe 'hi clear'
-
-		-- If the syntax has been enabled, reset it.
-		if fn.exists 'syntax_on' then exe 'syntax reset' end
-
-		-- replace the colors_name
-		vim.g.colors_name = color_name
-		color_name = nil
-
-		-- If we aren't using hex nor 256 colorsets.
-		if not (_USE_HEX or _USE_256) then vim.o.t_Co = '16' end
-
-		-- Highlight the baseline.
-		self.highlight('Normal', normal)
-
-		-- Highlight everything else.
-		for highlight_group, _ in pairs(highlights) do
-			self.highlight(highlight_group, resolve(highlights, highlight_group, false))
-		end
-
-		-- Set the terminal highlight colors.
-		self:highlight_terminal(terminal_ansi_colors)
+		return tbl[key]
 	end
-})
+
+	-- save the colors_name before syntax reset
+	local color_name = vim.g.colors_name
+
+	-- Clear the highlighting.
+	exe 'hi clear'
+
+	-- If the syntax has been enabled, reset it.
+	if fn.exists 'syntax_on' then exe 'syntax reset' end
+
+	-- replace the colors_name
+	vim.g.colors_name = color_name
+	color_name = nil
+
+	-- If we aren't using hex nor 256 colorsets.
+	if not (_USE_HEX or _USE_256) then vim.o.t_Co = '16' end
+
+	-- Highlight the baseline.
+	self.highlight('Normal', normal)
+
+	-- Highlight everything else.
+	for highlight_group, _ in pairs(highlights) do
+		self.highlight(highlight_group, resolve(highlights, highlight_group, false))
+	end
+
+	-- Set the terminal highlight colors.
+	self:highlight_terminal(terminal_ansi_colors)
+end})
